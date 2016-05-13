@@ -16,7 +16,7 @@
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
 Version: 0.3.5
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: Thread-safe collections and utilities for Ruby
 Group: Development/Languages
 # jsr166e.LondAdder, jsr166e.Striped64, jsr166e.ConcurrentHashMapV8
@@ -93,6 +93,7 @@ pushd ./%{gem_instdir}
 ruby -Ilib -e \
   'Dir.glob "./test/test_{array,cache,helper,synchronized_delegator}.rb", &method(:require)'
 %{?scl:EOF}
+popd
 
 
 %files
@@ -118,6 +119,9 @@ ruby -Ilib -e \
 %exclude %{gem_instdir}/.yardopts
 
 %changelog
+* Fri Apr 08 2016 Pavel Valena <pvalena@redhat.com> - 0.3.5-5
+- Add missing 'popd' to %%check section
+
 * Mon Feb 22 2016 Pavel Valena <pvalena@redhat.com> - 0.3.5-4
 - Update to 0.3.5
 
